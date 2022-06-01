@@ -9,7 +9,7 @@ import EditUserInfo from "./components/EditUserInfo";
 import UserPost from "./components/UserPost";
 import UsersPostPage from "./components/UsersPostPage";
 import axios from "axios";
-function App() {
+const  App = () => {
   const [user, setUser] = useState();
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -18,7 +18,7 @@ function App() {
   const [updatePost, setUpdatePost] = useState("");
   const [test, setTest] = useState();
   // i don't know why the data late !!
-  // to get data i must make some error in this fle!!
+  // to get data i must make some error in this file!!
   useEffect(async () => {
     await fetch("https://jsonplaceholder.typicode.com/users/")
       .then((response) => response.json())
@@ -30,64 +30,55 @@ function App() {
   return (
     <div className="">
       <div className="max-w-md  space-y-8 ">
-     {/* make route */}
-      <Routes>
-        {/* the defult rout (/) thar log in page */}
-        <Route
-          path="/"
-          element={
-            <Login
-              user={user}
-              setUserName={setUserName}
-              setEmail={setEmail}
-              userName={userName}
-              email={email}
-              setUserId={setUserId}
-            />
-          }
-        />
-        {/* /MainPage contain user name and the users(that contain the number of post an albums of the user) */}
-        <Route
-          path="/MainPage"
-          element={<MainPage user={user} userName={userName} email={email} />}
-        />
-        <Route
-          path="/user-page"
-          element={
-            <UserProfile
-              setUserName={setUserName}
-              setEmail={setEmail}
-              userName={userName}
-              email={email}
-            />
-          }
-        />
-        <Route
-          path="/edit-user-info"
-          element={
-            <EditUserInfo setUserName={setUserName} setEmail={setEmail} />
-          }
-        />
-        <Route
-          path="/user-post"
-          element={<UserPost userName={userName} userId={userId} />}
-        />
-        <Route
-          path="/users-post-page"
-          element={
-            <UsersPostPage
-              userId={userId}
-              setBodyOfPost={setBodyOfPost}
-              bodyOfPost={bodyOfPost}
-              test={test}
-              setTest={setTest}
-              setUpdatePost={setUpdatePost}
-              updatePost={updatePost}
-            />
-          }
-        />
-      </Routes>
-
+        {/* make route */}
+        <Routes>
+          {/* the defult rout (/) thar log in page */}
+          <Route
+            path="/"
+            element={
+              <Login
+                user={user}
+                setUserName={setUserName}
+                setEmail={setEmail}
+                userName={userName}
+                email={email}
+                setUserId={setUserId}
+              />
+            }
+          />
+          {/* /MainPage contain user name and the users(that contain the number of post an albums of the user) */}
+          <Route path="/MainPage" element={<MainPage userName={userName} />} />
+          <Route
+            path="/user-page"
+            element={<UserProfile userName={userName} email={email} />}
+          />
+          {/*/edit-user-info that contain user post number and albums number and user can update it  */}
+          <Route
+            path="/edit-user-info"
+            element={
+              <EditUserInfo setUserName={setUserName} setEmail={setEmail} />
+            }
+          />
+          <Route
+            path="/user-post"
+            element={<UserPost userName={userName} userId={userId} />}
+          />
+          {/* /users-post-page that contain post and try to allow user add post and modify it and delete */}
+          <Route
+            path="/users-post-page"
+            element={
+              <UsersPostPage
+                userId={userId}
+                setBodyOfPost={setBodyOfPost}
+                bodyOfPost={bodyOfPost}
+                test={test}
+                setTest={setTest}
+                setUpdatePost={setUpdatePost}
+                updatePost={updatePost}
+              />
+            }
+          />
+        </Routes>
       </div>
     </div>
   );
