@@ -1,6 +1,7 @@
 import "../App.css";
 import { useNavigate } from "react-router-dom";
-function EditUserInfo({ setUserName, setEmail }) {
+
+const EditUserInfo = ({ setUserName, setEmail }) => {
   const navigate = useNavigate();
   return (
     <div className="EditUserInfo">
@@ -31,6 +32,6 @@ function EditUserInfo({ setUserName, setEmail }) {
       </form>
     </div>
   );
-}
+};
 
 export default EditUserInfo;
