@@ -1,6 +1,7 @@
 import "../App.css";
 import { useNavigate } from "react-router-dom";
-function UserProfile({ setUserName, setEmail, userName, email }) {
+
+const UserProfile = ({ userName, email }) => {
   const navigate = useNavigate();
   return (
     <div className="UserProfile">
@@ -22,6 +23,6 @@ function UserProfile({ setUserName, setEmail, userName, email }) {
       </p>
     </div>
   );
-}
+};
 
 export default UserProfile;
