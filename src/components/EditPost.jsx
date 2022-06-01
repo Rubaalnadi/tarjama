@@ -1,7 +1,7 @@
 import "../App.css";
-import { useNavigate } from "react-router-dom";
-function EditPost({setUpdatePost,updatePost  }) {
-  const navigate = useNavigate();
+
+
+const EditPost = ({setUpdatePost }) => {
   return (
     <div className="EditPost">
       <input type="text" placeholder="update your post" 
