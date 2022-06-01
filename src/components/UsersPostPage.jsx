@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 import AddPostByUser from "./AddPostByUser";
-import Modal from "./Modal.jsx";
 
-function UsersPostPage({ setBodyOfPost, userId, bodyOfPost, test, setTest }) {
+
+const UsersPostPage = ({
+  setBodyOfPost,
+  userId,
+  bodyOfPost,
+  test,
+  setTest,
+}) => {
+  // state use to get data and make map of it to render
   const [posts, setPosts] = useState();
+  // state use to get comments from api
   const [comments, setComments] = useState();
+  // function to get data from api
   const getUsersPost = async () => {
+    // i use _limit to controll of number post tha will get if i don't use it , it will get 100 post
     await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10`)
       .then((response) => response.json())
       .then((data) => {
@@ -14,7 +24,9 @@ function UsersPostPage({ setBodyOfPost, userId, bodyOfPost, test, setTest }) {
         console.log(posts);
       });
   };
+  //function to get comment fro api
   const getUsersPostComments = async () => {
+    // i use _limit to controll of number commenttha will get if i don't use it , it will get 500 comment
     await fetch(`https://jsonplaceholder.typicode.com/comments?_limit=10`)
       .then((response) => response.json())
       .then((data) => {
@@ -22,8 +34,10 @@ function UsersPostPage({ setBodyOfPost, userId, bodyOfPost, test, setTest }) {
         console.log(comments);
       });
   };
+
   useEffect(getUsersPost, []);
   useEffect(getUsersPostComments, []);
+
   return (
     <>
       <div className="UsersPage">
@@ -57,7 +71,7 @@ function UsersPostPage({ setBodyOfPost, userId, bodyOfPost, test, setTest }) {
                         com.postId == post.id ? (
                           <p key={i}>{com.body}</p>
                         ) : (
-                          <p>hi</p>
+                          <></>
                         );
                       })}
                   </>
@@ -68,6 +82,6 @@ function UsersPostPage({ setBodyOfPost, userId, bodyOfPost, test, setTest }) {
       </div>
     </>
   );
-}
+};
 
 export default UsersPostPage;
