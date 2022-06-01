@@ -2,7 +2,8 @@
 import "../dist/output.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-function MainPage({ user, userName, email }) {
+
+const MainPage = ({ userName }) => {
   const navigate = useNavigate();
   return (
     <div className="">
@@ -37,6 +38,6 @@ function MainPage({ user, userName, email }) {
       </header>
     </div>
   );
-}
+};
 
 export default MainPage;
