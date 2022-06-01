@@ -1,11 +1,15 @@
 // import "../App.css";
 import "../dist/output.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-function Login({ user, setUserName, setEmail, userName, email, setUserId }) {
+
+const Login = ({ user, setUserName, setEmail, userName, email, setUserId }) => {
   const navigate = useNavigate();
   const [checkUser, setCheckUser] = useState(false);
+  // this state i think to use if the user enter user name or email not true
   // const [message, setMessage] = useState("");
+
+  // function to check if userName and email in the data
   const checkLogin = (e) => {
     e.preventDefault();
     user.map((usersInfo) => {
@@ -49,8 +53,8 @@ function Login({ user, setUserName, setEmail, userName, email, setUserId }) {
           </button>
         </form>
       </div>
-    {/* {checkUser
-              ? message && <div className="SuccessMessageLogin">{message}</div>
+      {/* {checkUser
+              ? message &&<></>
               : message && <div className="ErrorMessageLogin">{message}</div>} */}
     </>
   );
